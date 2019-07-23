@@ -1,0 +1,12 @@
+.background-image-container {
+	background-image: url("nature.jpg");
+	height: 300px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.text-container p {
+	text-align: center;
+	color: black;
+}

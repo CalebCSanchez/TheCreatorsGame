@@ -1,0 +1,41 @@
+.img-container {
+	background-image: url("nature.jpg");
+	height: 300px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.btn-group {
+	background-color: rgb(230,230,230);
+}
+
+.btn-container-1 {
+	display:flex;
+	flex-direction: row;
+}
+
+.btn-container-2 {
+	display: flex;
+	flex-direction: row;
+}
+
+.btn-container-1 div {
+	width: 50%;
+	height: 70px;
+}
+
+.btn-container-1 button {
+	width: 100%;
+	height: 100%;
+}
+
+.btn-container-2 div {
+	width: 50%;
+	height: 70px;
+}
+
+.btn-container-2 button {
+	width: 100%;
+	height: 100%;
+}
