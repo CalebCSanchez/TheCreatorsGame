@@ -16,6 +16,8 @@ god_armor = 99
 player_HP = 100
 player_ATK = wooden_sword
 player_DEF = no_clothes
+player_potion = 0
+
 
 enemy_HP = 10
 enemy_ATK = 5
@@ -26,6 +28,11 @@ enemy_alive = True
 from IPython.display import clear_output
 from random import randrange
 import time
+import keyboard
+
+    
+    
+
 
 def attack(attackedhp, personalatk, attackeddef,statement):
     attackhp = attackedhp - (randrange(personalatk) - (randrange(attackeddef)))
@@ -35,22 +42,33 @@ def attack(attackedhp, personalatk, attackeddef,statement):
     print(statement,"HP:", attackhp)
     return attackhp
 
+#Intro
 print("You wake up. decide to leave the house with a wooden sword in hand. You will try not to die this time.")
 time.sleep(4)
 print("You remind yourself, \"Don't let your hp go below 100!\"")
 time.sleep(3)
 print("Walking through the forest a bat appears!")
 count = 1
+
+#Game
 while(True):
     if enemy_alive == True:
-        choice = int(input("Choose 1 to attack or 2 to quit"))
+        choice = int(input("Choose 1 to attack or 0 to quit"))
         clear_output()
         if choice == 1:
             enemy_HP = attack(enemy_HP, player_ATK, enemy_DEF, "Enemy")
-            if count == 6 and enemy_HP <= 99999000 and enemy_HP >= 1000:
+            if count >= 6:
+                count+=1
+            if count >= 30 and enemy_HP <= 99999000 and enemy_HP >= 1000:
+                print("You notice a sticky note that says \"password\".")
+            if count >= 45 and enemy_HP <= 99999000 and enemy_HP >= 1000:
+                print("Jesus christ just type \"password\"!")
+            if count >= 6 and enemy_HP <= 99999000 and enemy_HP >= 1000:
                 print("He seems dazed!")
+                time.sleep(2)
                 print("You notice the creators laptop standing beside him. Quick get into it the computer!")
-                password = input("Type in the creators password!")
+                time.sleep(1)
+                password = input("Type in the creators password:")
                 if (password == "password"):
                     print("You've unlocked his computer! Set his HP low enough to kill him!")
                     enemy_HP = int(input("enemy_HP = "))
@@ -62,15 +80,24 @@ while(True):
                         print("Now finish him off!")
                 else:
                     print("ACCESS DENIED.")
+        
         elif choice == 2:
             break
         if player_HP <= 10:
             if count == 6:
                 print("You n░ed to heal! Call upon the godd░ss of life to he░l!")
                 time.sleep(3)
-                input("Please type your prayers a░d the goddess may spare your li░e")
+                input("Please type your prayers a░d the goddess may spare your li░e ")
                 time.sleep(3)
                 print("She has chosen to sp░re you!")
+                player_HP = 100
+                count +=1
+            elif count == 10:
+                print("You n░ed to h░a░░ C░░l u░on ░he godd░ss of l░f░ to he░l!")
+                time.sleep(3)
+                input("░░eas░ typ░ y░░r pr░y░░s a░d th░ g░░░░░░ may sp░r░ ░░ur li░e ")
+                time.sleep(3)
+                print("S░e ha░ ch░░░n ░o sp░re ░░u!")
                 player_HP = 100
                 count +=1
             else:    
@@ -159,13 +186,19 @@ while(True):
                 time.sleep(6)
                 enemy_alive = False
         else:
+            if count >= 50:
+                print("Your body begins to disintigrate. You have started to disappear as the world around you gets deleted.")
+                print("Caleb laughs meniacly at your downfall. You disappear never to b...")
+                clear_output()
+                break
             player_HP = attack(player_HP,enemy_ATK, player_DEF, "Player")
             if player_HP <= 0:                    
                 print("You lose!")
                 break
 
-    else:
+    elif choice == 0:
         print("Thanks for playing!")
         break
-
+    else:
+        print("Please press '1' or '0'.")
     
