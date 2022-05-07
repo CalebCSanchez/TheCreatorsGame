@@ -1,3 +1,8 @@
+
+from IPython.display import clear_output
+from random import randrange
+import time
+
 wooden_sword = 2
 sharpened_wooden_sword = 5
 rock_sword = 10
@@ -19,19 +24,11 @@ player_DEF = no_clothes
 player_potion = 0
 
 
+
 enemy_HP = 10
 enemy_ATK = 5
 enemy_DEF = 1
 enemy_alive = True
-
-
-from IPython.display import clear_output
-from random import randrange
-import time
-import keyboard
-
-    
-    
 
 
 def attack(attackedhp, personalatk, attackeddef,statement):
@@ -53,7 +50,12 @@ count = 1
 #Game
 while(True):
     if enemy_alive == True:
-        choice = int(input("Choose 1 to attack or 0 to quit"))
+        try:
+            choice = int(input("Choose 1 to attack or 0 to quit"))
+        except:
+            print("You need to choose 1 or 0")
+            continue
+            
         clear_output()
         if choice == 1:
             enemy_HP = attack(enemy_HP, player_ATK, enemy_DEF, "Enemy")
@@ -82,7 +84,7 @@ while(True):
                     print("ACCESS DENIED.")
         
         elif choice == 2:
-            break
+            quit
         if player_HP <= 10:
             if count == 6:
                 print("You n░ed to heal! Call upon the godd░ss of life to he░l!")
